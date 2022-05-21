@@ -33,3 +33,20 @@ CREATE TABLE IF NOT EXISTS ST_USER_SKILL (
         ON UPDATE CASCADE
         ON DELETE CASCADE
 ) ;
+
+----Insert Script
+
+insert into st_skill(name,is_technical) values("HTML-CSS-JAVASCRIPT",true);
+insert into st_skill(name,is_technical) values("ANGULAR",true);
+insert into st_skill(name,is_technical) values("REACT",true);
+insert into st_skill(name,is_technical) values("SPRING",true);
+insert into st_skill(name,is_technical) values("RESTFUL",true);
+insert into st_skill(name,is_technical) values("HIBERNATE",true);
+insert into st_skill(name,is_technical) values("GIT",true);
+insert into st_skill(name,is_technical) values("DOCKER",true);
+insert into st_skill(name,is_technical) values("JENKINS",true);
+insert into st_skill(name,is_technical) values("AWS",true);
+
+insert into st_skill(name,is_technical) values("SPOKEN",false);
+insert into st_skill(name,is_technical) values("COMMUNICATION",false);
+insert into st_skill(name,is_technical) values("APTITUDE",false);
