@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS ST_USER (
     id int auto_increment,
     name varchar(255) not null,
     email varchar(255),
-    mobile int,
+    mobile varchar(10),
     is_admin boolean not null default false,
     password varchar(255),
     primary key (id)
