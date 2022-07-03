@@ -67,3 +67,9 @@ insert into st_user_skill(user_id,skill_id,rating) values(2,10,9);
 insert into st_user_skill(user_id,skill_id,rating) values(2,11,7);
 insert into st_user_skill(user_id,skill_id,rating) values(2,12,8);
 insert into st_user_skill(user_id,skill_id,rating) values(2,13,7);
+
+----
+
+ALTER TABLE st_user
+ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
