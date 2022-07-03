@@ -3,9 +3,8 @@ package com.example.skilltracker.controller.dto;
 import lombok.Data;
 
 @Data
-public class UserDto {
+public class SkillDto {
     private long id;
     private String name;
-    private String email;
-    private Boolean isAdmin;
+    private boolean isTechnical;
 }

@@ -3,6 +3,7 @@ package com.example.skilltracker.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,4 +20,10 @@ public class UserEntity {
     private String email;
     private Boolean isAdmin;
     private String password;
+//    @ManyToMany
+//    @JoinTable(
+//        name = "st_user_skill",
+//        joinColumns = @JoinColumn(name = "id"),
+//        inverseJoinColumns = @JoinColumn(name = "user_id"))
+//    private Set<UserSkillEntity> userSkills;
 }
