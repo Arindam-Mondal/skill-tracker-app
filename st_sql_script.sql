@@ -33,3 +33,37 @@ CREATE TABLE IF NOT EXISTS ST_USER_SKILL (
         ON UPDATE CASCADE
         ON DELETE CASCADE
 ) ;
+
+----Insert Script
+
+insert into st_skill(name,is_technical) values("HTML-CSS-JAVASCRIPT",true);
+insert into st_skill(name,is_technical) values("ANGULAR",true);
+insert into st_skill(name,is_technical) values("REACT",true);
+insert into st_skill(name,is_technical) values("SPRING",true);
+insert into st_skill(name,is_technical) values("RESTFUL",true);
+insert into st_skill(name,is_technical) values("HIBERNATE",true);
+insert into st_skill(name,is_technical) values("GIT",true);
+insert into st_skill(name,is_technical) values("DOCKER",true);
+insert into st_skill(name,is_technical) values("JENKINS",true);
+insert into st_skill(name,is_technical) values("AWS",true);
+
+insert into st_skill(name,is_technical) values("SPOKEN",false);
+insert into st_skill(name,is_technical) values("COMMUNICATION",false);
+insert into st_skill(name,is_technical) values("APTITUDE",false);
+
+----
+
+insert into st_user_skill(user_id,skill_id,rating) values(2,1,9);
+insert into st_user_skill(user_id,skill_id,rating) values(2,2,6);
+insert into st_user_skill(user_id,skill_id,rating) values(2,3,9);
+insert into st_user_skill(user_id,skill_id,rating) values(2,4,8);
+insert into st_user_skill(user_id,skill_id,rating) values(2,5,6);
+insert into st_user_skill(user_id,skill_id,rating) values(2,6,9);
+insert into st_user_skill(user_id,skill_id,rating) values(2,7,8);
+insert into st_user_skill(user_id,skill_id,rating) values(2,8,7);
+insert into st_user_skill(user_id,skill_id,rating) values(2,9,6);
+insert into st_user_skill(user_id,skill_id,rating) values(2,10,9);
+
+insert into st_user_skill(user_id,skill_id,rating) values(2,11,7);
+insert into st_user_skill(user_id,skill_id,rating) values(2,12,8);
+insert into st_user_skill(user_id,skill_id,rating) values(2,13,7);
