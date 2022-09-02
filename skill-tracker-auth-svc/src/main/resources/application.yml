@@ -1,0 +1,16 @@
+server:
+  port: 8090
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/skilltracker
+    username: root
+    password: root
+
+app:
+  security:
+    jwt:
+      keystore-location: keys/keystore.jks
+      keystore-password: password
+      key-alias: jwtsigning
+      private-key-passphrase: password

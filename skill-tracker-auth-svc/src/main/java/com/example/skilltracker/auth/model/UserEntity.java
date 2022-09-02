@@ -1,4 +1,4 @@
-package com.example.skilltracker.model;
+package com.example.skilltracker.auth.model;
 
 import lombok.*;
 
@@ -18,11 +18,6 @@ public class UserEntity {
     private long id;
     private String name;
     private String email;
+//    private Boolean isAdmin;
     private String password;
-//    @ManyToMany
-//    @JoinTable(
-//        name = "st_user_skill",
-//        joinColumns = @JoinColumn(name = "id"),
-//        inverseJoinColumns = @JoinColumn(name = "user_id"))
-//    private Set<UserSkillEntity> userSkills;
 }

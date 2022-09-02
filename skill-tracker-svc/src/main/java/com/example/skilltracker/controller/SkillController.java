@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/skills")
+@RequestMapping("skill-tracker/api/v1/")
 public class SkillController {
 
     @Autowired
