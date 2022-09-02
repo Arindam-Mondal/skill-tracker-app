@@ -34,6 +34,18 @@ CREATE TABLE IF NOT EXISTS ST_USER_SKILL (
         ON DELETE CASCADE
 ) ;
 
+CREATE TABLE IF NOT EXISTS ST_USER_ROLE (
+    id int auto_increment,
+	user_id int,
+	role enum ('ADMIN','ENGINEER'),
+    primary key (id),
+    CONSTRAINT fk_role_user
+    FOREIGN KEY (user_id) 
+    REFERENCES ST_USER(id)
+    ON UPDATE CASCADE
+	ON DELETE CASCADE
+	) ;
+
 ----Insert Script
 
 insert into st_skill(name,is_technical) values("HTML-CSS-JAVASCRIPT",true);
@@ -68,8 +80,13 @@ insert into st_user_skill(user_id,skill_id,rating) values(2,11,7);
 insert into st_user_skill(user_id,skill_id,rating) values(2,12,8);
 insert into st_user_skill(user_id,skill_id,rating) values(2,13,7);
 
+insert into ST_USER_ROLE(user_id,role) values('1','ADMIN');	
+insert into ST_USER_ROLE(user_id,role) values('2','ENGINEERS');	
+
 ----
 
 ALTER TABLE st_user
 ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+
+Alter table st_user drop column is_admin;
