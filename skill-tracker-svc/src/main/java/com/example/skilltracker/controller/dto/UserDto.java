@@ -10,4 +10,5 @@ public class UserDto {
     private String email;
     private String mobile;
     Set<UserRoleDto> userRoles;
+    Set<UserSkillDto> userSkills;
 }

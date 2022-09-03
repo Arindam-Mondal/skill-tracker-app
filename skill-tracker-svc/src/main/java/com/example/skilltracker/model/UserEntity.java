@@ -23,5 +23,7 @@ public class UserEntity {
     private String mobile;
     @OneToMany(mappedBy = "user")
     private Set<UserRoleEntity> userRoles;
+    @OneToMany(mappedBy = "user")
+    private Set<UserSkillEntity> userSkills;
 
 }
