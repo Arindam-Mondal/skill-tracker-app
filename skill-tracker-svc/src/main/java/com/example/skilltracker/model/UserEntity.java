@@ -15,14 +15,13 @@ import java.util.Set;
 @Table(name="st_user")
 public class UserEntity {
     @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private String email;
     private String password;
-//    @ManyToMany
-//    @JoinTable(
-//        name = "st_user_skill",
-//        joinColumns = @JoinColumn(name = "id"),
-//        inverseJoinColumns = @JoinColumn(name = "user_id"))
-//    private Set<UserSkillEntity> userSkills;
+    private String mobile;
+    @OneToMany(mappedBy = "user")
+    private Set<UserRoleEntity> userRoles;
+
 }
