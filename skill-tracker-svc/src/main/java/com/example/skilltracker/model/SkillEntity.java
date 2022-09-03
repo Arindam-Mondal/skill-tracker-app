@@ -1,12 +1,17 @@
 package com.example.skilltracker.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+//@ToString
+@Builder
 @Entity
-@Data
 @Table(name="st_skill")
 public class SkillEntity {
     @Id

@@ -49,10 +49,10 @@ public class UserController {
 
         UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
         UserEntity savedUserEntity = userService.createUserProfile(userEntity);
-        UserDto savedUserDto = modelMapper.map(userEntity,UserDto.class);
+        UserDto savedUserDto = modelMapper.map(savedUserEntity,UserDto.class);
 
         LOGGER.info("Profile Created Successfully for the user {}", savedUserDto.getEmail());
 
-        return ResponseEntity.ok().body(userDto);
+        return ResponseEntity.ok().body(savedUserDto);
     }
 }

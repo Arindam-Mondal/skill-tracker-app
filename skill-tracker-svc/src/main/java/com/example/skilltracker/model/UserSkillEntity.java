@@ -1,11 +1,16 @@
 package com.example.skilltracker.model;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
+//@ToString
+@Builder
 @Entity
-@Data
 @Table(name="st_user_skill")
 public class UserSkillEntity {
     @Id
@@ -14,7 +19,7 @@ public class UserSkillEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "skill_id", referencedColumnName = "id")
     private SkillEntity skill;
-    private String rating;
+    private int rating;
     @ManyToOne
     @JoinColumn(name="user_id", nullable=false)
     private UserEntity user;

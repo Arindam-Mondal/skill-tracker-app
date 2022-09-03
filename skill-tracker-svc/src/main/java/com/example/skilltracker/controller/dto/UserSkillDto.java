@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class UserSkillDto {
     private Long skillId;
-    private String rating;
+    private int rating;
     private SkillDto skill;
 }
