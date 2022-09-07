@@ -90,3 +90,5 @@ ADD COLUMN created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 ADD COLUMN updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
 
 Alter table st_user drop column is_admin;
+
+alter table st_user add column associate_id varchar(225) not null;
