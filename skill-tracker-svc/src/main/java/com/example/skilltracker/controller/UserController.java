@@ -4,6 +4,7 @@ import com.example.skilltracker.controller.dto.UserDto;
 import com.example.skilltracker.model.UserEntity;
 import com.example.skilltracker.service.UserService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,9 @@ public class UserController {
     public ResponseEntity<UserDto> addUserProfile(@RequestBody UserDto userDto) {
 
         LOGGER.info("Adding user Profile for the user {}",userDto.getEmail());
+
+        modelMapper.getConfiguration()
+        .setMatchingStrategy(MatchingStrategies.STRICT);
 
         UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
         UserEntity savedUserEntity = userService.createUserProfile(userEntity);

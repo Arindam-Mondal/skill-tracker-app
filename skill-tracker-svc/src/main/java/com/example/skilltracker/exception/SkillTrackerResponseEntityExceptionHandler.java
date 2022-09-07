@@ -11,6 +11,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,6 +22,11 @@ public class SkillTrackerResponseEntityExceptionHandler extends ResponseEntityEx
     protected ResponseEntity<Object> handleConflict(ConstraintViolationException ex) {
         List<String> validationErrorList = validationErrorList(ex);
         return ResponseEntity.unprocessableEntity().body(validationErrorList);
+    }
+
+    @ExceptionHandler(value = { SQLIntegrityConstraintViolationException.class})
+    protected ResponseEntity<Object> handleSQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException ex) {
+        return ResponseEntity.unprocessableEntity().body(ex.getMessage());
     }
 
 

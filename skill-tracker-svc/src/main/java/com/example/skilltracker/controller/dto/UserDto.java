@@ -9,6 +9,7 @@ public class UserDto {
     private String name;
     private String email;
     private String mobile;
+    private String associateId;
     Set<UserRoleDto> userRoles;
     Set<UserSkillDto> userSkills;
 }
