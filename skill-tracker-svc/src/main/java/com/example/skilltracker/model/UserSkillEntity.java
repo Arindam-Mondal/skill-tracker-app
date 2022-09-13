@@ -23,7 +23,6 @@ public class UserSkillEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "skill_id", referencedColumnName = "id")
     private SkillEntity skill;
-    @NotBlank
     @Min(1)
     @Max(20)
     private int rating;

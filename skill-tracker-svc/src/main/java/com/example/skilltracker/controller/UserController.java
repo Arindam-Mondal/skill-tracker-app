@@ -43,6 +43,16 @@ public class UserController {
         return ResponseEntity.ok().body(userDtoList);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<UserDto> getUserById(@PathVariable long id) {
+
+        LOGGER.info("Getting the user with id {}", id);
+
+        UserDto userDto = modelMapper.map(userService.getUserById(id), UserDto.class);
+
+        return ResponseEntity.ok().body(userDto);
+    }
+
     @PostMapping
     public ResponseEntity<UserDto> addUserProfile(@RequestBody UserDto userDto) {
 
@@ -53,6 +63,23 @@ public class UserController {
 
         UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
         UserEntity savedUserEntity = userService.createUserProfile(userEntity);
+        UserDto savedUserDto = modelMapper.map(savedUserEntity,UserDto.class);
+
+        LOGGER.info("Profile Created Successfully for the user {}", savedUserDto.getEmail());
+
+        return ResponseEntity.ok().body(savedUserDto);
+    }
+
+    @PutMapping
+    public ResponseEntity<UserDto> updateUserProfile(@RequestBody UserDto userDto) {
+
+        LOGGER.info("Adding user Profile for the user {}",userDto.getEmail());
+
+        modelMapper.getConfiguration()
+                .setMatchingStrategy(MatchingStrategies.STRICT);
+
+        UserEntity userEntity = modelMapper.map(userDto, UserEntity.class);
+        UserEntity savedUserEntity = userService.updateUserProfile(userEntity);
         UserDto savedUserDto = modelMapper.map(savedUserEntity,UserDto.class);
 
         LOGGER.info("Profile Created Successfully for the user {}", savedUserDto.getEmail());

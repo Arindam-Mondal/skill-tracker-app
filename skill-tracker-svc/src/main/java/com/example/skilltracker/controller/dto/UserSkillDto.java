@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class UserSkillDto {
-    private Long skillId;
+    private Long id;
     private int rating;
     private SkillDto skill;
 }

@@ -12,8 +12,10 @@ import com.example.skilltracker.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -38,7 +40,7 @@ public class UserServiceImpl implements UserService {
         Set<UserSkillEntity> userSkillSet = new HashSet<>();
         Set<UserRoleEntity> userRoleSet = new HashSet<>();
         skillList.stream().forEach(skill -> {
-            UserSkillEntity userSkillEntity = UserSkillEntity.builder().skill(skill).user(userEntity).rating(0).build();
+            UserSkillEntity userSkillEntity = UserSkillEntity.builder().skill(skill).user(userEntity).rating(1).build();
             userSkillSet.add(userSkillEntity);
         });
 
@@ -50,5 +52,16 @@ public class UserServiceImpl implements UserService {
 
         return userRepository.save(userEntity);
 
+    }
+
+    @Override
+    public UserEntity updateUserProfile(UserEntity userEntity) {
+        //User Should be able to update only the expertiseLevel
+        return userRepository.save(userEntity);
+    }
+
+    @Override
+    public UserEntity getUserById(long id) {
+        return userRepository.findById(id).orElseThrow(()-> new EntityNotFoundException("User Not found with id " + id));
     }
 }

@@ -9,7 +9,6 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Getter
 @Setter
-//@ToString
 @Builder
 @Entity
 @Table(name="st_user_role")
