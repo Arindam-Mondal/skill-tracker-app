@@ -1,4 +1,4 @@
-package com.example.skilltracker.controller.dto;
+package com.example.skilltracker.dto;
 
 import lombok.Data;
 
@@ -6,5 +6,5 @@ import lombok.Data;
 public class UserSkillDto {
     private Long id;
     private int rating;
-    private SkillDto skill;
+    private Long skillId;
 }

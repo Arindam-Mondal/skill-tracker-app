@@ -19,7 +19,7 @@ import java.util.Set;
 public class UserEntity {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @NotBlank(message = "Name is mandatory")
     @Size(min=5,max=30,message = "Name should have a length between 5 and 30")
     private String name;

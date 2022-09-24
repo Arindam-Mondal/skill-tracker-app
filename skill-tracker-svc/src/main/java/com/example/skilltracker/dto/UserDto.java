@@ -1,4 +1,4 @@
-package com.example.skilltracker.controller.dto;
+package com.example.skilltracker.dto;
 
 import lombok.Data;
 

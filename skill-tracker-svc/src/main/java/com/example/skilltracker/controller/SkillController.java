@@ -1,6 +1,6 @@
 package com.example.skilltracker.controller;
 
-import com.example.skilltracker.controller.dto.SkillDto;
+import com.example.skilltracker.dto.SkillDto;
 import com.example.skilltracker.service.SkillService;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
