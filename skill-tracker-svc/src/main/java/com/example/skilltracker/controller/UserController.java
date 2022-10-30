@@ -3,11 +3,10 @@ package com.example.skilltracker.controller;
 import com.example.skilltracker.dto.UserDto;
 import com.example.skilltracker.enums.RoleType;
 import com.example.skilltracker.model.UserEntity;
+import com.example.skilltracker.search.SearchCriteria;
 import com.example.skilltracker.service.UserService;
 import com.example.skilltracker.service.UserTransformationService;
-import com.example.skilltracker.util.SkilltrackerUtil;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.lang.invoke.MethodHandles;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 @RestController
@@ -58,13 +60,13 @@ public class UserController {
         return ResponseEntity.ok().body(userDto);
     }
 
-    @PostMapping("/{roleType}")
-    public ResponseEntity<UserDto> addUserProfile(@PathVariable RoleType roleType, @RequestBody UserDto userDto) {
+    @PostMapping("/engineer/add-profile")
+    public ResponseEntity<UserDto> addUserProfile(@RequestBody UserDto userDto) {
 
         LOGGER.info("Adding user Profile for the user {}",userDto.getEmail());
 
         UserEntity userEntity = userTransformationService.userDtoToUserEntity(userDto);
-        UserEntity savedUserEntity = userService.createUserProfile(userEntity,roleType);
+        UserEntity savedUserEntity = userService.createUserProfile(userEntity,RoleType.ENGINEER);
         UserDto savedUserDto = modelMapper.map(savedUserEntity,UserDto.class);
 
         LOGGER.info("Profile Created Successfully for the user {}", savedUserDto.getEmail());
@@ -72,11 +74,11 @@ public class UserController {
         return ResponseEntity.ok().body(savedUserDto);
     }
 
-    @PutMapping
-    public ResponseEntity<UserDto> updateUserProfile(@RequestBody UserDto userDto) {
+    @PutMapping("/engineer/add-profile/{id}")
+    public ResponseEntity<UserDto> updateUserProfile(@PathVariable long id, @RequestBody UserDto userDto) {
 
         LOGGER.info("Updating user Profile for the user {}",userDto.getEmail());
-
+        userDto.setId(id);
         UserEntity userEntity = userTransformationService.userDtoToUserEntity(userDto);
         UserEntity savedUserEntity = userService.updateUserProfile(userEntity);
         UserDto savedUserDto = modelMapper.map(savedUserEntity,UserDto.class);
@@ -84,5 +86,23 @@ public class UserController {
         LOGGER.info("Profile Created Successfully for the user {}", savedUserDto.getEmail());
 
         return ResponseEntity.ok().body(savedUserDto);
+    }
+
+    @GetMapping("/admin/search-profile")
+    @ResponseBody
+    public ResponseEntity<List<UserDto>> searchProfile(@RequestParam String name,@RequestParam String associateId,@RequestParam String skill) {
+
+        LOGGER.info("Getting the user profile  with search criteria name : {} associate_id : {} skillid: {}", name,associateId,skill);
+
+        List<SearchCriteria> parameters = new ArrayList<SearchCriteria>();
+
+        List<UserEntity> userEntityList = userService.getUserByNameAssociateIdAndSkill(name, associateId, skill);
+        List<UserDto> userDtoList = new ArrayList<>();
+        userEntityList.forEach(userEntity -> {
+            UserDto userDto = modelMapper.map(userEntity,UserDto.class);
+            userDtoList.add(userDto);
+        });
+
+        return ResponseEntity.ok().body(userDtoList);
     }
 }
